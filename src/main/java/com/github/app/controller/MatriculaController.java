@@ -50,7 +50,7 @@ public class MatriculaController {
         return repository.findAll();
     }
 
-    // ERRO 7: @PathVariable com nome "ids" não corresponde ao parâmetro {id} da URL
+    //O parâmetro da URL era {id}, mas a variável Java estava nomeada como ids. O Spring não consegue fazer o bind e lança erro 400 nas requisições DELETE.
     @DeleteMapping("/{id}")
     @Transactional
     public void excluir(@PathVariable Integer id) {

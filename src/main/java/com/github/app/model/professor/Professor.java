@@ -2,8 +2,19 @@ package com.github.app.model.professor;
 
 import com.github.app.model.endereco.Endereco;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -44,7 +55,7 @@ public class Professor {
             this.nome = dados.nome();
         }
         if (dados.email() != null) {
-            this.email = dados.email(); // ERRO 6: deveria ser this.email = dados.email()
+            this.email = dados.email(); //No método atualizarInformacoes(), ao tentar atualizar o e-mail, o código atribuía o valor ao campo nome em vez de email, corrompendo o nome do professor.
         }
         if (dados.telefone() != null) {
             this.telefone = dados.telefone();

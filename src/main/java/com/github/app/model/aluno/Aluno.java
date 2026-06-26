@@ -2,8 +2,17 @@ package com.github.app.model.aluno;
 
 import com.github.app.model.endereco.Endereco;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -11,7 +20,7 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "alunos") // ERRO 3: deveria ser @Table(name = "alunos")
+@Table(name = "alunos") //A anotação @Table apontava para a tabela professores, fazendo o Hibernate tentar usar a mesma tabela para duas entidades diferentes.
 public class Aluno {
 
     @Id

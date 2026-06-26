@@ -57,7 +57,8 @@ public class AlunoController {
         var aluno = repository.getReferenceById(dados.id());
         aluno.atualizarInformacoes(dados);
     }
-
+    
+    //O método atualizar() estava anotado com @PostMapping, igual ao método cadastrar(). Dois métodos com o mesmo verbo HTTP no mesmo path causam conflito de mapeamento e impedem o Spring de inicializar.
     @DeleteMapping("/{id}")
     @Transactional
     public void excluir(@PathVariable Integer id) { //Troquei o tipo do parâmetro de String para Integer, pois o ID do Aluno é do tipo Integer

@@ -11,8 +11,8 @@ public record DadosListagemAluno(
     public DadosListagemAluno(Aluno aluno) {
         this(
             aluno.getId(),
-            aluno.getNome(), // ERRO 4: deveria ser aluno.getNome()
-            aluno.getEmail(),  // ERRO 4: deveria ser aluno.getEmail()
+            aluno.getNome(), // No construtor do record, os getters getNome() e getEmail() estavam trocados, fazendo a API retornar o e-mail no campo nome e vice-versa.
+            aluno.getEmail(),  
             aluno.getRa(),
             aluno.getCurso()
         );
