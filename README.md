@@ -6,12 +6,6 @@ Este repositório contém o projeto corrigido com todos os erros identificados e
 
 ---
 
-## Autora
-
-Maria Eduarda Ramos — Análise e Desenvolvimento de Sistemas — Senac RJ
-
----
-
 ## Como executar
 
 ```bash
@@ -166,3 +160,8 @@ public interface AlunoRepository extends JpaRepository<Aluno, Integer>
 - Spring Validation
 - Maven
 
+---
+
+## Autora
+
+Maria Eduarda Ramos — Análise e Desenvolvimento de Sistemas — Senac RJ
