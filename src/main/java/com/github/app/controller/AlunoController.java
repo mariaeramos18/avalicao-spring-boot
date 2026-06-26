@@ -5,13 +5,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.github.app.model.aluno.Aluno;
 import com.github.app.model.aluno.AlunoRepository;
 import com.github.app.model.aluno.DadosAtualizacaoAluno;
 import com.github.app.model.aluno.DadosCadastroAluno;
 import com.github.app.model.aluno.DadosListagemAluno;
-import com.github.app.model.aluno.Aluno;
 
 import jakarta.transaction.Transactional;
 
@@ -44,7 +51,7 @@ public class AlunoController {
     }
 
     // ERRO 5: deveria ser @PutMapping — @PostMapping fará este endpoint conflitar com o cadastrar()
-    @PostMapping
+    @PutMapping
     @Transactional
     public void atualizar(@RequestBody DadosAtualizacaoAluno dados) {
         var aluno = repository.getReferenceById(dados.id());
@@ -53,7 +60,7 @@ public class AlunoController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void excluir(@PathVariable String id) {
+    public void excluir(@PathVariable Integer id) { //Troquei o tipo do parâmetro de String para Integer, pois o ID do Aluno é do tipo Integer
         repository.deleteById(id);
     }
 }

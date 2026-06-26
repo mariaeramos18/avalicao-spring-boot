@@ -3,7 +3,13 @@ package com.github.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.github.app.model.aluno.Aluno;
 import com.github.app.model.aluno.AlunoRepository;
@@ -31,7 +37,7 @@ public class MatriculaController {
     @PostMapping
     @Transactional
     public void cadastrar(@RequestBody DadosCadastroMatricula dados) {
-        Aluno aluno = alunoRepository.getReferenceById(dados.alunoId().toString());
+        Aluno aluno = alunoRepository.getReferenceById(dados.alunoId());  // remove o .toString()
         Professor professor = professorRepository.getReferenceById(dados.professorId());
         Matricula matricula = new Matricula(dados);
         matricula.setAluno(aluno);
@@ -47,7 +53,7 @@ public class MatriculaController {
     // ERRO 7: @PathVariable com nome "ids" não corresponde ao parâmetro {id} da URL
     @DeleteMapping("/{id}")
     @Transactional
-    public void excluir(@PathVariable Integer ids) {
-        repository.deleteById(ids);
+    public void excluir(@PathVariable Integer id) {
+        repository.deleteById(id);
     }
 }
