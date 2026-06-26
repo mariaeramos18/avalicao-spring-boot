@@ -6,19 +6,6 @@ Este repositório contém o projeto corrigido com todos os erros identificados e
 
 ---
 
-## Como executar
-
-```bash
-git clone https://github.com/mariaeramos18/avalicao-spring-boot.git
-cd avalicao-spring-boot
-mvn spring-boot:run
-```
-
-Acesse: `http://localhost:8080`  
-Console H2: `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:mem:testdb`, usuário: `sa`, senha: em branco)
-
----
-
 ## Erros encontrados e corrigidos
 
 ### Erro 1 — Versão inexistente do Spring Boot
@@ -136,7 +123,7 @@ public void excluir(@PathVariable Integer id)
 
 ---
 
-### Erro bônus — Tipo incorreto no AlunoRepository
+### Erro 9 — Tipo incorreto no AlunoRepository
 **Arquivo:** `AlunoRepository.java`  
 **Problema:** O segundo parâmetro do `JpaRepository` define o tipo do ID da entidade. O ID de `Aluno` é `Integer`, mas estava declarado como `String`, causando erros de compilação em todo método que usava `getReferenceById()` ou `deleteById()`.  
 **Correção:**
